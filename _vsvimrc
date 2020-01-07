@@ -1,0 +1,267 @@
+
+set nu
+set relativenumber
+" 修改leader键
+let mapleader = ","
+
+let g:mapleader = ","
+
+" 搜索时立即高亮 结果 
+set incsearch
+
+" 搜索时忽略大小写
+set ignorecase
+" 有一个或以上大写字母时仍大小写敏感
+set smartcase
+
+
+"搜索高亮
+set hlsearch
+"通用映射{{{2
+"
+
+
+"normal模式 下的 快捷键
+noremap K :vsc Edit.ExpandSelection<CR>
+
+
+
+
+
+"
+" 全部选中
+map ,sa ggVG
+
+
+"跳转文件
+nnoremap <space> :vsc Tools.InvokeAceJumpCommand<CR>
+
+
+
+
+"插入断点
+nnoremap ,dd ^:vsc EditorContextMenus.CodeWindow.Breakpoint.InsertBreakpoint<CR>
+"调试下一步
+nnoremap ,dj :vsc Debug.StepOver<CR>
+
+"创建一个类文件 
+nnoremap ,cc :vsc Project.AddClass<CR>
+nnoremap ,cd :vsc Project.NewFolder<CR>
+"PM命令行
+nnoremap ,nu :vsc View.PackageManagerConsole<CR>
+
+
+"替换当前选中的文本
+vnoremap <Leader>r "ry:%s/<C-R>r/
+
+"标签 tag 跳转  vs 好像 不支持  alt 组合 键 ，先注释 了吧~
+"vnoremap <A-M> :vsc Edit.GotoBrace<CR> 
+
+vnoremap <C-C> "+y
+vnoremap <C-Insert> "+y
+vnoremap <C-V> "+P
+imap <C-V> <C-R>+
+map <S-Insert> "+P
+cmap <C-V> <C-R>+
+cmap <S-Insert> <C-R>+
+
+
+
+
+
+
+"visual 模式 下 按* 号 搜索 光标选中的内容(对已选中的内容进行查找)
+vmap * "ry/<C-R>r<CR>
+vmap # "ry?<C-R>r<CR>
+
+
+
+
+
+
+"  tab , 切换 窗口
+nmap <Tab> <c-w>w
+nnoremap <C-H> <C-W>h
+nnoremap <C-L> <C-W>l
+
+nnoremap <C-J> <C-W>j
+nnoremap <C-K> <C-W>k
+"
+" 除此之外的窗口全部关闭
+nmap ,tc :vsc File.CloseAllButThis<CR>
+
+"打开最近的编辑位置 
+nnoremap <C-S-E> :vsc ReSharper.ReSharper_GotoRecentEdits<CR>
+"打开最近的文件
+nnoremap <C-E> :vsc ReSharper.ReSharper_GotoRecentFiles<CR>
+
+"视图导航 -上一个
+
+nnoremap <C-O> :vsc View.NavigateBackward<CR>
+
+"视图导航 -下一个
+
+nnoremap <C-I> :vsc View.NavigateForward<CR>
+
+nnoremap <C-S> :w<CR>
+
+
+
+
+
+
+"nnoremap <Space> :action KJumpAction<CR>
+"vmap <Space> :action KJumpAction<CR>
+"map <space> ,,s 
+"map <space> <Plug>(easymotion-bd-f)
+
+"内部的iw{{{2
+"
+"
+nnoremap yc yi"
+nnoremap vc vi"
+nnoremap dc di"
+nnoremap cc ci"
+
+nnoremap yz yi'
+nnoremap vz vi'
+nnoremap dz di'
+nnoremap cz ci'
+
+nnoremap y. yi>
+nnoremap v. vi>
+nnoremap d. di>
+nnoremap c. ci>
+
+nnoremap y, yi(
+nnoremap v, vi(
+nnoremap d, di(
+nnoremap c, ci(
+
+nnoremap yr yi[
+nnoremap vr vi[
+nnoremap dr di[
+nnoremap cr ci[
+
+nnoremap ym yi{
+nnoremap vm vi{
+nnoremap dm di{
+nnoremap cm ci{
+
+"w 用的不是很多 ，(到下面首个单词) 省略一下吧…… 
+nnoremap yw yiw
+nnoremap vw viw
+nnoremap cw ciw
+nnoremap dw diw
+
+
+nnoremap yic yi"
+nnoremap vic vi"
+nnoremap dic di"
+nnoremap cic ci"
+
+nnoremap yiz yi'
+nnoremap viz vi'
+nnoremap diz di'
+nnoremap ciz ci'
+
+nnoremap yi. yi>
+nnoremap vi. vi>
+nnoremap di. di>
+nnoremap ci. ci>
+
+nnoremap yie yi(
+nnoremap vie vi(
+nnoremap die di(
+nnoremap cie ci(
+
+nnoremap yir yi[
+nnoremap vir vi[
+nnoremap dir di[
+nnoremap cir ci[
+
+nnoremap yim yi{
+nnoremap vim vi{
+nnoremap dim di{
+nnoremap cim ci{
+
+
+"外部的aw{{{2
+
+nnoremap yac ya"
+nnoremap vac va"
+nnoremap dac da"
+nnoremap cac ca"
+
+nnoremap yaz ya'
+nnoremap vaz va'
+nnoremap daz da'
+nnoremap caz ca'
+
+nnoremap ya. ya>
+nnoremap va. va>
+nnoremap da. da>
+nnoremap ca. ca>
+
+nnoremap yae ya(
+nnoremap vae va(
+nnoremap dae da(
+nnoremap cae ca(
+
+nnoremap yar ya[
+nnoremap var va[
+nnoremap dar da[
+nnoremap car ca[
+
+nnoremap yam ya{
+nnoremap vam va{
+nnoremap dam da{
+nnoremap cam ca{
+
+
+
+
+"surround 删除包围里面   {{{2
+nnoremap dic di"
+nnoremap diz di'
+nnoremap di. di>
+nnoremap die di(
+nnoremap dir di[
+nnoremap dim di{
+
+
+"surround 删除包围和里面   {{{2
+nnoremap dac da"
+nnoremap daz da'
+nnoremap da. da>
+nnoremap dae da(
+nnoremap dar da[
+nnoremap dam da{
+
+
+"surround 模拟surround   {{{2
+" Surround simulating bindings
+
+" Surround delete bindings
+nnoremap ds) vi(dvhp
+nnoremap ds] vi[dvhp
+nnoremap ds} vi{dvhp
+nnoremap ds> vi<dvhp
+nnoremap ds" vi"dvhp
+nnoremap ds' vi'dvhp
+
+" Surround change bindings
+nnoremap cs"' vi"oh<Esc>msvi"l<Esc>cl'<Esc>`scl'<Esc>
+nnoremap cs'" vi'oh<Esc>msvi'l<Esc>cl"<Esc>`scl"<Esc>
+
+" Surround visual selected text
+vnoremap S" c"<C-r>""<Esc>
+vnoremap S' c"<C-r>"'<Esc>
+vnoremap S) c(<C-r>")<Esc>
+vnoremap S] c[<C-r>"]<Esc>
+vnoremap S} c{<C-r>"}<Esc>
+vnoremap S> c<lt><C-r>"><Esc>
+vnoremap S* c/*<C-r>"*/<Esc>
+"vnoremap St c<lt>div><CR><C-r>"<Esc>
+" Surround in div tag and edit tag
+vnoremap St c<lt>div><CR><C-r>"<Esc>`<lt>lcw

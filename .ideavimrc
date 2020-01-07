@@ -1,0 +1,249 @@
+"基本设置{{{1
+"设置相对行号
+set nu
+set relativenumber
+
+"在底部显示 当前模式（normal 或者 insert）
+set showmode
+
+
+
+"搜索高亮显示
+set hls
+
+"设置啥时候都不可以打开折叠 hor 就是水平移动 的时候 不要打开折叠 
+set foldopen-=hor
+
+
+
+" 修改leader键
+let mapleader = ","
+
+let g:mapleader = ","
+
+
+" 搜索时忽略大小写
+set ignorecase
+
+" 搜索时立即高亮 结果 
+set incsearch
+" 有一个或以上大写字母时仍大小写敏感
+set smartcase
+
+easymotion插件 
+set easymotion
+"多光标支持插件 
+set multiple-cursors
+"注释插件 
+set commentary
+
+"surround 插件
+set surround
+"自动切换 输入法
+"set keep-english-in-normal 
+"
+"热键映射{{{1
+"通用映射{{{2
+"进入全屏装B 模式 
+
+noremap <leader>p :action TogglePresentationMode<CR>
+
+"normal 模式下 选中 php 的$变量
+"noremap <space>k evF$
+"normal模式 下的 快捷键
+noremap K :action EditorSelectWord<CR>
+
+"vim 的 R 好像 一点 都没用呀……  替换 之 …… 
+noremap R ciw
+
+"kjump 类似vim easymotion 光标跳转 的插件 
+"noremap <C-H>  :action KJumpAction<CR>
+"noremap <C-L>  :action KJumpAction.Char2<CR>
+
+"折叠相关  自定义折叠区域开关
+"noremap zc /region<CR>zc
+"noremap zo /region<CR>zo
+
+
+
+noremap <C-H> <C-W>h
+noremap <C-L> <C-W>l
+noremap <C-K> <C-K>k
+noremap <C-J> <C-K>j
+
+"替换当前选中的文本
+vnoremap <Leader>r "ry:%s/<C-R>r/
+
+vnoremap <C-C> "+y
+vnoremap <C-Insert> "+y
+vnoremap <C-V> "+P
+imap <C-V> <C-R>+
+map <S-Insert> "+P
+cmap <C-V> <C-R>+
+cmap <S-Insert> <C-R>+
+
+
+
+noremap <leader>w :action emacsIDEAs.AceJumpObtainThenReplace.Word<CR>
+noremap <leader>a :action emacsIDEAs.AceJumpAndReplace.Word<CR>
+
+
+"visual 模式 下 按* 号 搜索 光标选中的内容(对已选中的内容进行查找)
+vmap * "ry/<C-R>r<CR>
+
+
+
+
+
+
+"  tab , 切换 窗口
+nnoremap <Tab> <c-w>w
+
+nnoremap ,tc :action CloseAllEditorsButActive<CR>
+"
+" 全部选中
+map ,sa ggVG
+
+" 快速保存 
+
+nnoremap <c-s> :w<CR>
+
+"将当前选项卡移动到别的tab上面 
+nnoremap <leader>\ :action MoveEditorToOppositeTabGroup<CR>
+
+
+
+"设置断点
+nnoremap ,dd :action ToggleLineBreakpoint<CR>
+
+
+
+
+"nnoremap <Space> :action KJumpAction<CR>
+"vmap <Space> :action KJumpAction<CR>
+"map <space> ,,s 
+"map <space> <Plug>(easymotion-bd-f)
+
+nnoremap <space>  :action KJumpAction<CR>
+
+"内部的iw{{{2
+
+nnoremap yc yi"
+nnoremap vc vi"
+nnoremap dc di"
+nnoremap cc ci"
+
+nnoremap yz yi'
+nnoremap vz vi'
+nnoremap dz di'
+nnoremap cz ci'
+
+nnoremap y. yi>
+nnoremap v. vi>
+nnoremap d. di>
+nnoremap c. ci>
+
+nnoremap y, yi(
+nnoremap v, vi(
+nnoremap d, di(
+nnoremap c, ci(
+
+nnoremap yr yi[
+nnoremap vr vi[
+nnoremap dr di[
+nnoremap cr ci[
+
+nnoremap ym yi{
+nnoremap vm vi{
+nnoremap dm di{
+nnoremap cm ci{
+
+"w 用的不是很多 ，(到下面首个单词) 省略一下吧…… 
+nnoremap yw yiw
+nnoremap vw viw
+nnoremap cw ciw
+nnoremap dw diw
+
+nnoremap yic yi"
+nnoremap vic vi"
+nnoremap dic di"
+nnoremap cic ci"
+
+nnoremap yiz yi'
+nnoremap viz vi'
+nnoremap diz di'
+nnoremap ciz ci'
+
+nnoremap yi. yi>
+nnoremap vi. vi>
+nnoremap di. di>
+nnoremap ci. ci>
+
+nnoremap yie yi(
+nnoremap vie vi(
+nnoremap die di(
+nnoremap cie ci(
+
+nnoremap yir yi[
+nnoremap vir vi[
+nnoremap dir di[
+nnoremap cir ci[
+
+nnoremap yim yi{
+nnoremap vim vi{
+nnoremap dim di{
+nnoremap cim ci{
+
+
+
+
+"外部的aw{{{2
+
+nnoremap yac ya"
+nnoremap vac va"
+nnoremap dac da"
+nnoremap cac ca"
+
+nnoremap yaz ya'
+nnoremap vaz va'
+nnoremap daz da'
+nnoremap caz ca'
+
+nnoremap ya. ya>
+nnoremap va. va>
+nnoremap da. da>
+nnoremap ca. ca>
+
+nnoremap yae ya(
+nnoremap vae va(
+nnoremap dae da(
+nnoremap cae ca(
+
+nnoremap yar ya[
+nnoremap var va[
+nnoremap dar da[
+nnoremap car ca[
+
+nnoremap yam ya{
+nnoremap vam va{
+nnoremap dam da{
+nnoremap cam ca{
+
+
+
+
+"surround 删除包围里面   {{{2
+nnoremap dic di"
+nnoremap diz di'
+nnoremap di. di>
+nnoremap die di(
+nnoremap dir di[
+nnoremap dim di{
+
+"surround 删除包围和里面   {{{2
+nnoremap dac da"
+nnoremap daz da'
+nnoremap da. da>
+nnoremap dae da(
+nnoremap dar da[
+nnoremap dam da{
